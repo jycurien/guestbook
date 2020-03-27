@@ -3,7 +3,7 @@
 {% block title %}Conference Guestbook - {{ conference }}{% endblock %}
 
 {% block body %}
-    <h1>{{ conference }} Conference</h1>
+    <h2>{{ conference }} Conference</h2>
 
     {% if comments|length > 0 %}
         <div>There are {{ comments|length }} comments</div>
@@ -13,7 +13,7 @@
                 <img src="{{ asset('uploads/photos/') ~ comment.photoFilename }}" alt="{{ comment.photoFilename }}">
             {% endif %}
 
-            <h2>{{ comment.author }}</h2>
+            <h3>{{ comment.author }}</h3>
             <small>{{ comment.createdAt|format_datetime('medium', 'short') }}</small>
 
             <p>{{ comment.text }}</p>

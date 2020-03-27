@@ -3,10 +3,10 @@
 {% block title %}Conference Guestbook{% endblock %}
 
 {% block body %}
-    <h1>Give your feedback!</h1>
+    <h2>Give your feedback!</h2>
 
     {% for conference in conferences %}
-        <h2>{{ conference }}</h2>
+        <h3>{{ conference }}</h3>
         <p><a href="{{ path('conference', { id: conference.id }) }}">View</a></p>
     {% endfor %}
 {% endblock %}
