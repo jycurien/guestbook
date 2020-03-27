@@ -4,6 +4,7 @@ type: php:7.3
 
 runtime:
     extensions:
+        - redis
         - pdo_pgsql
         - apcu
         - mbstring
@@ -13,6 +14,7 @@ runtime:
         
 relationships:
     database: "db:postgresql"
+    redis: "rediscache:redis"
 
 build:
     flavor: none
