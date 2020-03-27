@@ -10,10 +10,10 @@
         
         {% for comment in comments %}
             {% if comment.photoFilename %}
-                <img src="{{ asset('uploads/photos/') ~ comment.photoFilename }}" alt="{{ comment.photoFilename }}">
+                <img src="{{ asset('uploads/photos/' ~ comment.photoFilename) }}" alt="{{ comment.photoFilename }}" width="300">
             {% endif %}
 
-            <h3>{{ comment.author }}</h3>
+            <h4>{{ comment.author }}</h4>
             <small>{{ comment.createdAt|format_datetime('medium', 'short') }}</small>
 
             <p>{{ comment.text }}</p>
@@ -28,6 +28,10 @@
     {% else %}
         <div>No comments have been posted yet for this conference</div>
     {% endif %}
+
+    <h3>Add your own feedback</h3>
+
+    {{ form(comment_form) }}
 {% endblock %}
 
 
