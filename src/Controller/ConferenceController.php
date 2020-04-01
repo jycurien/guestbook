@@ -49,14 +49,16 @@ class ConferenceController extends AbstractController
 
     /**
      * @Route("/", name="homepage")
+     * @param ConferenceRepository $conferenceRepository
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function index()
+    public function index(ConferenceRepository $conferenceRepository)
     {
         $response = new Response($this->twig->render('conference/index.html.twig', [
+            'conferences' => $conferenceRepository->findAll(),
         ]));
         $response->setSharedMaxAge(3600);
 

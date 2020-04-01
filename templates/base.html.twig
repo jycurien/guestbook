@@ -1,25 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Conference Guestbook{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
         {% block stylesheets %}
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-                  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,500i,600,600i&display=swap" rel="stylesheet" />
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
     <body>
-        <header>
-            <h1><a href="{{ path('homepage') }}">Guestbook</a></h1>
-            {{ render_esi(path('conference_header')) }}
-            <hr>
+        <header class="header">
+            <h1 class="sr-only">
+                Conference Guestbook
+            </h1>
+
+            <nav class="navbar navbar-expand-xl navbar-light bg-light">
+                <div class="container mt-4 mb-3">
+                    <a class="navbar-brand mr-4 pr-2" href="{{ path('homepage') }}">
+                        &#128217; Conference Guestbook
+                    </a>
+
+                    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#header-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Afficher/Cacher la navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="header-menu">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3">
+                                <a class="nav-link" href="{{ path('easyadmin') }}">
+                                    Admin
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <nav class="bg-light border-bottom">
+                <div class="container">
+                    {{ render_esi(path('conference_header')) }}
+                </div>
+            </nav>
         </header>
-        <div class="container">
+
+        <main role="main" class="container mt-5">
             {% block body %}{% endblock %}
-        </div>
+        </main>
+
+        <footer class="mt-7 px-3 py-5 text-center text-muted">
+            <p>
+                Conference Guestbook
+            </p>
+            <p>
+                <a href="#" class="text-white">Back to top</a>
+            </p>
+        </footer>
+
         {% block javascripts %}
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-                    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
 </html>
