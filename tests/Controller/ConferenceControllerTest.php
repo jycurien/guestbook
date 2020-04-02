@@ -8,17 +8,18 @@ use App\Entity\Comment;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Panther\PantherTestCase;
 
-class ConferenceControllerTest extends WebTestCase
+class ConferenceControllerTest extends PantherTestCase
 {
     public function testIndex()
     {
         $_SERVER['PANTHER_NO_SANDBOX'] = 1;
+//        $_SERVER['PANTHER_NO_HEADLESS'] = 1;
 
-        $client = static::createClient();
+        $client = static::createPantherClient();
         $client->request('GET', '/en/');
-
-        $this->assertResponseIsSuccessful();
+        $this->assertPageTitleContains('Conference Guestbook');
         $this->assertSelectorTextContains('h2', 'Give your feedback');
     }
 
